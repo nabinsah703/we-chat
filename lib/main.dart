@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:we_chat/screens/splash_screen.dart';
-import '/screens/auth/login_screen.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:we_chat/firebase_options.dart';
@@ -8,10 +8,12 @@ import 'package:we_chat/firebase_options.dart';
 late Size mq;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown, DeviceOrientation.portraitUp])
+      .then((value) => runApp(const MyApp()));
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

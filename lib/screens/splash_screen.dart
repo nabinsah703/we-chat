@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:we_chat/screens/home_screen.dart';
 
 import '../../main.dart';
@@ -14,6 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     Future.delayed(
       const Duration(milliseconds: 2000),
       () {
@@ -27,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
     mq = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(
           'Welcome to We Chat',
           style: TextStyle(
